@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Surprise For You 🤍</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ============================================
+       LOADING SCREEN
+       ============================================ -->
+  <div id="loading-screen">
+    <div class="loader-heart">🤍</div>
+    <div class="loader-text">Just Wait A Moment, Lokkhi...🌸</div>
+  </div>
+
+  <!-- ============================================
+       LANDING SCREEN
+       ============================================ -->
+  <div id="landing-screen">
+    <div class="landing-card" id="landing-card">
+      <h1 class="landing-title">Can I ask you something My Dear Lokkhi? 🤍</h1>
+      <p class="landing-subtitle">Do you love me?</p>
+      <div class="landing-buttons" id="button-container">
+        <button class="btn btn-yes" id="btn-yes">Yes</button>
+        <button class="btn btn-no" id="btn-no">No</button>
+      </div>
+    </div>
+    <img src="assets/images/catpeek.png" alt="Kitten peeking" class="kitten-peek" id="kitten-peek">
+  </div>
+
+  <!-- ============================================
+       CELEBRATION OVERLAY
+       ============================================ -->
+  <div id="celebration-overlay">
+    <canvas id="confetti-canvas"></canvas>
+  </div>
+
+  <!-- ============================================
+       MAIN CONTENT
+       ============================================ -->
+  <div id="main-content">
+
+    <!-- SECTION 1: Thank You -->
+    <section class="section hero-section" id="section-1">
+      <div class="hero-bg-layers">
+        <div class="hero-gradient"></div>
+        <div class="hero-grain"></div>
+        <div class="hero-particles" id="hero-particles"></div>
+        <div class="hero-petals" id="hero-petals"></div>
+        <div class="hero-radial-glow"></div>
+      </div>
+
+      <div class="hero-content section-inner reveal">
+        <div class="hero-hero-wrapper">
+          <div class="hero-heart-float">
+            <div class="hero-heart-glow"></div>
+            <div class="hero-heart-orbit">
+              <div class="orbit-word" style="--angle: 0deg;">Smile</div>
+              <div class="orbit-word" style="--angle: 60deg;">Eyes</div>
+              <div class="orbit-word" style="--angle: 120deg;">Kindness</div>
+              <div class="orbit-word" style="--angle: 180deg;">Future</div>
+              <div class="orbit-word" style="--angle: 240deg;">Lokkhi</div>
+              <div class="orbit-word" style="--angle: 300deg;">Love</div>
+            </div>
+            <div class="hero-heart-anim">❤️</div>
+          </div>
+        </div>
+
+        <div class="hero-glass-card">
+          <p class="hero-subtitle-handwritten">My dearest Lokkhi,</p>
+          <h1 class="hero-title">Thank you for coming into my life</h1>
+          <p class="hero-desc">Every moment with you feels like a beautiful dream I never want to wake up from.</p>
+        </div>
+
+        <div class="hero-scroll-indicator" id="hero-scroll-indicator">
+          <span class="scroll-text"></span>
+          <div class="scroll-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Typewriter / Emotional Storytelling -->
+    <section class="section" id="section-3">
+      <div class="section-inner reveal">
+        <p class="typewriter-text">
+          <span id="typewriter"></span><span class="typewriter-cursor">|</span>
+        </p>
+        <div class="story-cards">
+          <div class="story-card reveal">
+            <div class="story-card-icon">☀️</div>
+            <p class="story-card-quote">"Every morning feels a little brighter because of you."</p>
+            <p class="story-card-label">Good Morning</p>
+          </div>
+          <div class="story-card reveal">
+            <div class="story-card-icon">💬</div>
+            <p class="story-card-quote">"Even a few minutes with you can make my whole day."</p>
+            <p class="story-card-label">Every Conversation</p>
+          </div>
+          <div class="story-card reveal">
+            <div class="story-card-icon">🌙</div>
+            <p class="story-card-quote">"My favorite way to end a day is wishing you good night."</p>
+            <p class="story-card-label">Good Night</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Timeline -->
+    <section class="section" id="section-4">
+      <div class="section-inner reveal">
+        <h2 class="section-title">Our Journey</h2>
+        <p class="section-desc">Every milestone matters</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="timeline-icon">❤️</span>
+            <div class="timeline-text">
+              <div>The day we met</div>
+              <div style="font-size:0.85rem;opacity:0.7;">8 March 2026</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-icon">💬</span>
+            <div class="timeline-text">
+              <div>Our first conversation</div>
+              <div style="font-size:0.85rem;opacity:0.7;">3 June 2026</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-icon">✨</span>
+            <div class="timeline-text">
+              <div>The day I realized I like you</div>
+              <div style="font-size:0.85rem;opacity:0.7;">8 June 2026</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-icon">🥰</span>
+            <div class="timeline-text">
+              <div>The day you made me the happiest</div>
+              <div style="font-size:0.85rem;opacity:0.7;">14 July 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: Reasons I Love You — Polaroid Gallery -->
+    <section class="section" id="section-5">
+      <div class="section-inner reveal">
+        <h2 class="section-title">Reasons I Love You</h2>
+        <p class="section-desc">The little things that make you, you</p>
+        <div class="polaroid-gallery">
+          <div class="polaroid-mem-card" style="--rotate: -2.5deg;">
+            <div class="polaroid-mem-image">
+              <img src="assets/images/youreyes.png" alt="Your Eyes" loading="lazy">
+            </div>
+            <div class="polaroid-mem-caption">
+              <h3 class="polaroid-mem-title">Your Eyes</h3>
+              <p class="polaroid-mem-text">"I could get lost in them forever."</p>
+            </div>
+          </div>
+          <div class="polaroid-mem-card" style="--rotate: 1.8deg;">
+            <div class="polaroid-mem-image">
+              <img src="assets/images/yoursmile.png" alt="Your Smile" loading="lazy">
+            </div>
+            <div class="polaroid-mem-caption">
+              <h3 class="polaroid-mem-title">Your Smile</h3>
+              <p class="polaroid-mem-text">"My favorite reason to smile."</p>
+            </div>
+          </div>
+          <div class="polaroid-mem-card" style="--rotate: -1.2deg;">
+            <div class="polaroid-mem-image">
+              <img src="assets/images/yourkindness.png" alt="Your Kindness" loading="lazy">
+            </div>
+            <div class="polaroid-mem-caption">
+              <h3 class="polaroid-mem-title">Your Kindness</h3>
+              <p class="polaroid-mem-text">"The most beautiful part of you."</p>
+            </div>
+          </div>
+          <div class="polaroid-mem-card polaroid-heart-card" style="--rotate: 2deg;">
+            <div class="polaroid-heart-content">
+              <div class="polaroid-heart-glow"></div>
+              <div class="polaroid-heart-sparkles" id="heart-sparkles"></div>
+              <div class="polaroid-heart-emoji">🌸</div>
+              <h3 class="polaroid-mem-title">Everything About You</h3>
+              <p class="polaroid-mem-text">"Because it was never just your smile, your eyes, or your kindness...<br>It has always been everything about you."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: Future Memories -->
+    <section class="section" id="section-6">
+      <div class="section-inner reveal">
+        <h2 class="section-title">🤍 Future Memories</h2>
+        <p class="section-desc">The best chapters of our story haven't happened yet...</p>
+        <div class="polaroid-grid">
+          <div class="polaroid-card" style="--rotate: -2deg;">
+            <div class="polaroid-emoji">🤍</div>
+            <div class="polaroid-title">Our First Date</div>
+            <div class="polaroid-status">Coming Soon...</div>
+          </div>
+          <div class="polaroid-card" style="--rotate: 1.5deg;">
+            <div class="polaroid-emoji">📸</div>
+            <div class="polaroid-title">Our First Selfie</div>
+            <div class="polaroid-status">Reserved For Us</div>
+          </div>
+          <div class="polaroid-card" style="--rotate: -1deg;">
+            <div class="polaroid-emoji">☕</div>
+            <div class="polaroid-title">Coffee & Endless Conversations</div>
+            <div class="polaroid-status">Waiting...</div>
+          </div>
+          <div class="polaroid-card" style="--rotate: 2deg;">
+            <div class="polaroid-emoji">🌸</div>
+            <div class="polaroid-title">The Day You Said Yes</div>
+            <div class="polaroid-status">Our Story Begins Here</div>
+          </div>
+          <div class="polaroid-card" style="--rotate: -1.5deg;">
+            <div class="polaroid-emoji">💐</div>
+            <div class="polaroid-title">The First Flower I Gave You</div>
+            <div class="polaroid-status">Coming Soon...</div>
+          </div>
+          <div class="polaroid-card" style="--rotate: 1deg;">
+            <div class="polaroid-emoji">🌙</div>
+            <div class="polaroid-title">Our Favorite Evening Together</div>
+            <div class="polaroid-status">To Be Written...</div>
+          </div>
+        </div>
+        <p class="future-quote">"These frames are empty today, but I believe one day they'll become the most beautiful part of our story."</p>
+      </div>
+    </section>
+
+    <!-- SECTION 7: Love Counter -->
+    <section class="section" id="section-7">
+      <div class="section-inner reveal">
+        <h2 class="section-title">I've been smiling because of you for...</h2>
+        <div class="counter-display">
+          <div class="counter-box">
+            <div class="counter-value" id="counter-days">0</div>
+            <div class="counter-label">Days</div>
+          </div>
+          <div class="counter-box">
+            <div class="counter-value" id="counter-hours">0</div>
+            <div class="counter-label">Hours</div>
+          </div>
+          <div class="counter-box">
+            <div class="counter-value" id="counter-minutes">0</div>
+            <div class="counter-label">Minutes</div>
+          </div>
+          <div class="counter-box">
+            <div class="counter-value" id="counter-seconds">0</div>
+            <div class="counter-label">Seconds</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: Love Letter -->
+    <section class="section" id="section-8">
+      <div class="section-inner reveal">
+        <h2 class="section-title bengali-title">A letter for You🤍</h2>
+        <div class="letter-scene">
+          <div class="letter-glow"></div>
+          <div class="letter-petals" id="letter-petals"></div>
+          <div class="letter-particles" id="letter-particles"></div>
+          <div class="letter-paper">
+            <div class="letter-wax-seal">🤍</div>
+            <div class="letter-content">
+              <p class="letter-typewriter" id="letter-typewriter"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: Final Surprise -->
+    <section class="section" id="section-9">
+      <div class="section-inner reveal">
+        <div class="final-heart">
+          <img src="assets/images/catpropose.png" alt="Proposing" class="final-heart-img">
+        </div>
+        <h2 class="final-heading">I don't promise a perfect life...</h2>
+        <p class="final-promise">But I promise I'll always try to make you a little happier.</p>
+        <p class="final-question-script">Will you stay with me forever? ❤️</p>
+        <div class="final-buttons">
+          <button class="btn-final btn-yes" id="btn-final-yes">Yes 💍</button>
+          <button class="btn-final btn-yes" id="btn-final-sure">Of Course 🥹</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ============================================
+       LIGHTBOX
+       ============================================ -->
+  <div id="lightbox">
+    <button id="lightbox-close">&times;</button>
+    <img src="" alt="Enlarged" id="lightbox-img">
+  </div>
+
+  <!-- ============================================
+       ENDING SCREEN
+       ============================================ -->
+  <div id="ending-screen">
+    <div class="ending-content">
+      <div class="ending-sparkles" id="ending-sparkles"></div>
+      <h1 class="ending-thanks">Thank you</h1>
+      <p class="ending-line">for staying until the very end.</p>
+      <div class="ending-divider"></div>
+      <p class="ending-closing">
+        Every little thing here<br>
+        was made just for you. 🤍
+      </p>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SCRIPTS
+       ============================================ -->
+  <script src="script.js"></script>
+</body>
+</html>
