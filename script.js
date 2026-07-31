@@ -36,7 +36,8 @@ const CONFIG = {
     { icon: '✨', text: 'The day I realized I like you', date: '8 June 2026' },
     { icon: '🥰', text: 'The day you made me the happiest', date: '14 July 2026' },
     { icon: '💖', text: 'The day she said yes', date: '26 July 2026' },
-    { icon: '✨', text: 'Three Magical Words', date: '27 July 2026' }
+    { icon: '✨', text: 'Three Magical Words', date: '27 July 2026' },
+    { icon: '📞', text: 'First Call From Her🤍', date: '30 July 2026, 08:42 PM' }
   ],
 
   // Reason cards
