@@ -402,6 +402,11 @@ body {
   position: relative;
 }
 
+#section-5b {
+  min-height: auto;
+  padding: 3rem 1rem;
+}
+
 .section-inner {
   max-width: 900px;
   width: 100%;
@@ -1284,34 +1289,35 @@ body {
    ============================================ */
 .album-slider {
   position: relative;
-  max-width: 560px;
-  margin: 2.5rem auto 0;
+  width: 100%;
+  max-width: 640px;
+  margin: 2rem auto 0;
   overflow: hidden;
-  border-radius: 1.5rem;
+  border-radius: 1.25rem;
   background: linear-gradient(145deg, #ffffff 0%, #fef9f0 100%);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07), 0 2px 6px rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .album-track {
   display: flex;
-  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .album-slide {
   min-width: 100%;
   flex-shrink: 0;
-  padding: 0.8rem 0.8rem 1.2rem;
+  padding: 0.6rem 0.6rem 0.9rem;
   box-sizing: border-box;
 }
 
 .album-image {
   width: 100%;
-  aspect-ratio: 1;
-  border-radius: 1rem;
+  aspect-ratio: 4/3;
+  border-radius: 0.9rem;
   overflow: hidden;
   background: linear-gradient(135deg, #fce7f3 0%, #f3e8ff 100%);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   position: relative;
   z-index: 2;
 }
@@ -1332,31 +1338,31 @@ body {
   text-align: center;
   position: relative;
   z-index: 2;
-  padding: 0 0.3rem;
+  padding: 0 0.4rem;
 }
 
 .album-caption p {
   font-family: 'Georgia', 'Times New Roman', serif;
   font-style: italic;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.55;
   opacity: 0.9;
   margin: 0;
 }
 
 .album-arrow {
   position: absolute;
-  top: 50%;
+  top: 42%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  font-size: 1.4rem;
+  width: 40px;
+  height: 40px;
+  font-size: 1.3rem;
   color: var(--text-primary);
   cursor: pointer;
   z-index: 10;
@@ -1364,33 +1370,33 @@ body {
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
 }
 
 .album-arrow:hover {
   background: rgba(255, 255, 255, 0.95);
   color: var(--accent-pink);
-  box-shadow: 0 6px 20px rgba(236, 72, 153, 0.15);
+  box-shadow: 0 6px 18px rgba(236, 72, 153, 0.15);
 }
 
 .album-prev {
-  left: 12px;
+  left: 10px;
 }
 
 .album-next {
-  right: 12px;
+  right: 10px;
 }
 
 .album-dots {
   display: flex;
   justify-content: center;
-  gap: 0.6rem;
-  margin-top: 1.2rem;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .album-dot {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: rgba(236, 72, 153, 0.25);
   cursor: pointer;
@@ -1401,26 +1407,26 @@ body {
 
 .album-dot.active {
   background: var(--accent-pink);
-  transform: scale(1.2);
-  box-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
+  transform: scale(1.25);
+  box-shadow: 0 0 8px rgba(236, 72, 153, 0.4);
 }
 
 .album-quote {
-  margin-top: 2.5rem;
-  font-size: 1.15rem;
+  margin-top: 2rem;
+  font-size: 1.05rem;
   font-style: italic;
   color: var(--text-secondary);
-  max-width: 600px;
+  max-width: 520px;
   margin-left: auto;
   margin-right: auto;
-  line-height: 1.7;
+  line-height: 1.65;
   position: relative;
 }
 
 .album-quote::before,
 .album-quote::after {
   content: '"';
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--accent-pink);
   font-style: normal;
   line-height: 0;
@@ -1437,50 +1443,80 @@ body {
 
 @media (max-width: 768px) {
   .album-slider {
-    max-width: 440px;
+    max-width: 92vw;
+    border-radius: 1rem;
+  }
+
+  .album-slide {
+    padding: 0.5rem 0.5rem 0.75rem;
+  }
+
+  .album-image {
+    aspect-ratio: 4/3;
+    border-radius: 0.75rem;
+    margin-bottom: 0.6rem;
   }
 
   .album-caption p {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
+    line-height: 1.5;
   }
 
   .album-arrow {
-    width: 38px;
-    height: 38px;
-    font-size: 1.2rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1.15rem;
   }
 
   .album-prev {
-    left: 8px;
+    left: 6px;
   }
 
   .album-next {
-    right: 8px;
+    right: 6px;
+  }
+
+  .album-dots {
+    margin-top: 0.8rem;
+    gap: 0.45rem;
+  }
+
+  .album-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .album-quote {
+    font-size: 0.95rem;
+    margin-top: 1.5rem;
+    padding: 0 0.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .album-slider {
-    max-width: 320px;
-    border-radius: 1rem;
+    max-width: 94vw;
+    border-radius: 0.9rem;
   }
 
   .album-slide {
-    padding: 0.6rem 0.6rem 1rem;
+    padding: 0.4rem 0.4rem 0.6rem;
   }
 
   .album-image {
-    border-radius: 0.7rem;
+    aspect-ratio: 3/2;
+    border-radius: 0.6rem;
+    margin-bottom: 0.5rem;
   }
 
   .album-caption p {
-    font-size: 0.88rem;
+    font-size: 0.8rem;
   }
 
   .album-arrow {
-    width: 34px;
-    height: 34px;
-    font-size: 1.1rem;
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
   }
 
   .album-prev {
@@ -1489,6 +1525,21 @@ body {
 
   .album-next {
     right: 4px;
+  }
+
+  .album-dots {
+    margin-top: 0.7rem;
+    gap: 0.4rem;
+  }
+
+  .album-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .album-quote {
+    font-size: 0.88rem;
+    margin-top: 1.2rem;
   }
 }
 
