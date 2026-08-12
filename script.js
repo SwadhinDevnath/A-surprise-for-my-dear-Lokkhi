@@ -637,14 +637,12 @@ function initLongDistanceSlider() {
   const track = section.querySelector('.album-track');
   const slides = section.querySelectorAll('.album-slide');
   const dotsContainer = section.querySelector('.album-dots');
-  const prevBtn = section.querySelector('.album-prev');
-  const nextBtn = section.querySelector('.album-next');
   if (!track || !slides.length) return;
 
   let current = 0;
   const total = slides.length;
   let autoplayInterval = null;
-  const AUTOPLAY_DELAY = 3500;
+  const AUTOPLAY_DELAY = 5000;
 
   function updateSlider() {
     track.style.transform = `translateX(-${current * 100}%)`;
@@ -696,14 +694,64 @@ function initLongDistanceSlider() {
   dotsContainer.innerHTML = '';
   dots.forEach(dot => dotsContainer.appendChild(dot));
 
-  nextBtn.addEventListener('click', next);
-  prevBtn.addEventListener('click', prev);
+  let startX = 0;
+  let startY = 0;
+  let isDragging = false;
+  let hasMoved = false;
+  let lastDeltaX = 0;
+
+  section.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    isDragging = true;
+    hasMoved = false;
+    lastDeltaX = 0;
+    track.style.transition = 'none';
+    stopAutoplay();
+  }, { passive: true });
+
+  section.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const currentX = e.touches[0].clientX;
+    const currentY = e.touches[0].clientY;
+    const deltaX = currentX - startX;
+    const deltaY = currentY - startY;
+    lastDeltaX = deltaX;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 8) {
+      hasMoved = true;
+      e.preventDefault();
+      track.style.transform = `translateX(calc(-${current * 100}% + ${deltaX}px))`;
+    }
+  }, { passive: false });
+
+  section.addEventListener('touchend', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    track.style.transition = 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
+
+    if (hasMoved && Math.abs(lastDeltaX) > 40) {
+      if (lastDeltaX > 0) {
+        goTo(current - 1);
+      } else {
+        goTo(current + 1);
+      }
+    } else {
+      updateSlider();
+      startAutoplay();
+    }
+  });
+
+  section.addEventListener('touchcancel', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    track.style.transition = 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
+    updateSlider();
+    startAutoplay();
+  });
 
   section.addEventListener('mouseenter', stopAutoplay);
   section.addEventListener('mouseleave', startAutoplay);
-
-  section.addEventListener('touchstart', stopAutoplay, { passive: true });
-  section.addEventListener('touchend', startAutoplay);
 
   startAutoplay();
 }
