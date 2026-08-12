@@ -630,6 +630,25 @@ function initPolaroidGallery() {
   observer.observe(section);
 }
 
+function initAlbumGallery() {
+  const section = document.getElementById('section-5b');
+  if (!section) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const cards = section.querySelectorAll('.album-card');
+        cards.forEach((card, i) => {
+          setTimeout(() => card.classList.add('visible'), 150 + i * 180);
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  observer.observe(section);
+}
+
 /* ============================================
    HERO EFFECTS
    ============================================ */
@@ -707,6 +726,7 @@ function init() {
   initLightbox();
   initTimeline();
   initPolaroidGallery();
+  initAlbumGallery();
   initKittenPeek();
 
   // Hero effects
