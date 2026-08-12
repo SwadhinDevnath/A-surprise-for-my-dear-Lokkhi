@@ -630,23 +630,82 @@ function initPolaroidGallery() {
   observer.observe(section);
 }
 
-function initAlbumGallery() {
+function initLongDistanceSlider() {
   const section = document.getElementById('section-5b');
   if (!section) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const cards = section.querySelectorAll('.album-card');
-        cards.forEach((card, i) => {
-          setTimeout(() => card.classList.add('visible'), 150 + i * 180);
-        });
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
+  const track = section.querySelector('.album-track');
+  const slides = section.querySelectorAll('.album-slide');
+  const dotsContainer = section.querySelector('.album-dots');
+  const prevBtn = section.querySelector('.album-prev');
+  const nextBtn = section.querySelector('.album-next');
+  if (!track || !slides.length) return;
 
-  observer.observe(section);
+  let current = 0;
+  const total = slides.length;
+  let autoplayInterval = null;
+  const AUTOPLAY_DELAY = 3500;
+
+  function updateSlider() {
+    track.style.transform = `translateX(-${current * 100}%)`;
+    const dots = dotsContainer.querySelectorAll('.album-dot');
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === current);
+    });
+  }
+
+  function goTo(index) {
+    current = (index + total) % total;
+    updateSlider();
+    resetAutoplay();
+  }
+
+  function next() {
+    goTo(current + 1);
+  }
+
+  function prev() {
+    goTo(current - 1);
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayInterval = setInterval(next, AUTOPLAY_DELAY);
+  }
+
+  function stopAutoplay() {
+    if (autoplayInterval) {
+      clearInterval(autoplayInterval);
+      autoplayInterval = null;
+    }
+  }
+
+  function resetAutoplay() {
+    stopAutoplay();
+    startAutoplay();
+  }
+
+  const dots = Array.from({ length: total }, (_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'album-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    dot.addEventListener('click', () => goTo(i));
+    return dot;
+  });
+
+  dotsContainer.innerHTML = '';
+  dots.forEach(dot => dotsContainer.appendChild(dot));
+
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+
+  section.addEventListener('mouseenter', stopAutoplay);
+  section.addEventListener('mouseleave', startAutoplay);
+
+  section.addEventListener('touchstart', stopAutoplay, { passive: true });
+  section.addEventListener('touchend', startAutoplay);
+
+  startAutoplay();
 }
 
 /* ============================================
@@ -726,7 +785,7 @@ function init() {
   initLightbox();
   initTimeline();
   initPolaroidGallery();
-  initAlbumGallery();
+  initLongDistanceSlider();
   initKittenPeek();
 
   // Hero effects
