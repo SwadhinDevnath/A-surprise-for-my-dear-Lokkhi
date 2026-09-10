@@ -37,7 +37,9 @@ const CONFIG = {
     { icon: '🥰', text: 'The day you made me the happiest', date: '14 July 2026' },
     { icon: '💖', text: 'The day she said yes', date: '26 July 2026' },
     { icon: '✨', text: 'Three Magical Words', date: '27 July 2026' },
-    { icon: '📞', text: 'First Call From Her🤍', date: '30 July 2026, 08:42 PM' }
+    { icon: '📞', text: 'First Call From Her🤍', date: '30 July 2026, 08:42 PM' },
+    { icon: '🤍', text: 'Our First Date🤍', date: '10 September 2026' },
+    { icon: '💝', text: 'Our Very First 100 Days Together💝', date: '11 September 2026' }
   ],
 
   // Reason cards
@@ -595,19 +597,20 @@ function initTimeline() {
 }
 
 function initPolaroidGallery() {
-  const section = document.getElementById('section-5');
-  if (!section) return;
+  const sections = [document.getElementById('section-5'), document.getElementById('section-5b')].filter(Boolean);
+  if (!sections.length) return;
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const cards = section.querySelectorAll('.polaroid-mem-card');
+        const cards = entry.target.querySelectorAll('.polaroid-mem-card');
         cards.forEach((card, i) => {
           setTimeout(() => card.classList.add('visible'), 150 + i * 180);
         });
 
-        const sparkleContainer = document.getElementById('heart-sparkles');
-        if (sparkleContainer) {
+        const sparkleContainer = entry.target.querySelector('#heart-sparkles');
+        if (sparkleContainer && !sparkleContainer.dataset.initialized) {
+          sparkleContainer.dataset.initialized = 'true';
           for (let i = 0; i < 12; i++) {
             const sparkle = document.createElement('div');
             sparkle.className = 'polaroid-heart-sparkle';
@@ -627,7 +630,7 @@ function initPolaroidGallery() {
     });
   }, { threshold: 0.2 });
 
-  observer.observe(section);
+  sections.forEach(section => observer.observe(section));
 }
 
 function initLongDistanceSlider() {
