@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Chat</title>
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #d1d7db;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+        }
+        .chat-container {
+            width: 100%;
+            max-width: 600px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: #efeae2;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .chat-header {
+            background-color: rgba(0, 128, 105, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background-color: #dfe5e7;
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .avatar svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-name {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .contact-status {
+            font-size: 13px;
+            color: #d9fdd3;
+        }
+        .chat-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 5%;
+            background-image: url('ChatGPT%20Image%20Aug%2014,%202026,%2001_08_10%20AM.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .message {
+            margin-bottom: 12px;
+            max-width: 75%;
+            position: relative;
+            padding: 6px 7px 8px 9px;
+            border-radius: 7.5px;
+            font-size: 14.2px;
+            line-height: 19px;
+            color: #ffffff;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            word-wrap: break-word;
+        }
+        .message-sent {
+            align-self: flex-end;
+            background: rgba(255, 255, 255, 0.2);
+            border-top-right-radius: 0;
+        }
+        .message-sent::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -8px;
+            width: 0;
+            height: 0;
+            border-top: 0px solid transparent;
+            border-left: 8px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 8px solid transparent;
+        }
+        .message-received {
+            align-self: flex-start;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-top-left-radius: 0;
+        }
+        .message-received::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -8px;
+            width: 0;
+            height: 0;
+            border-top: 0px solid transparent;
+            border-right: 8px solid rgba(0, 0, 0, 0.25);
+            border-bottom: 8px solid transparent;
+        }
+        .reply-block {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #6ee7b7;
+            border-radius: 4px;
+            padding: 4px 8px;
+            margin-bottom: 5px;
+            font-size: 13px;
+            color: #f1f1f1;
+        }
+        .reply-name {
+            color: #6ee7b7;
+            font-weight: 500;
+            margin-bottom: 2px;
+            font-size: 13px;
+        }
+        .time {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.8);
+            float: right;
+            margin-left: 10px;
+            margin-top: 4px;
+            display: inline-block;
+            position: relative;
+            top: 2px;
+        }
+        .message-sent .time {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        a {
+            color: #8ae;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="avatar">
+                <img src="image_7240a4.png" alt="Profile" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="contact-info">
+                <div class="contact-name">লক্ষী🤍</div>
+                <div class="contact-status">online</div>
+            </div>
+        </div>
+        <div class="chat-body">
+
+            <div class="message message-sent">
+                shono shono
+                <span class="time">8:47 am</span>
+            </div>
+    
+            <div class="message message-received">
+                Hmmm,,,,bolen
+                <span class="time">8:48 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                ekta jinis dicchi age nije dekho tarpor baki kotha
+                <span class="time">8:48 am</span>
+            </div>
+    
+            <div class="message message-received">
+                
+            <div class="reply-block">
+                <div class="reply-name">Swadhin Devnath</div>
+                ekta jinis dicchi age nije dekho tarpor baki kotha
+            </div>
+            Okk
+            
+                <span class="time">8:48 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                <a href="https://for-my-lokkhiii.netlify.app/" target="_blank">https://for-my-lokkhiii.netlify.app/</a>
+                <span class="time">8:48 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                just open it
+                <span class="time">8:48 am</span>
+            </div>
+    
+            <div class="message message-received">
+                Vlo tho<br>🙂
+                <span class="time">8:50 am</span>
+            </div>
+    
+            <div class="message message-received">
+                
+            <div class="reply-block">
+                <div class="reply-name">Swadhin Devnath</div>
+                <a href="https://for-my-lokkhiii.netlify.app/" target="_blank">https://for-my-lokkhiii.netlify.app/</a>
+            </div>
+            Sundor onek,,,,atho idea ki vabea acha
+            
+                <span class="time">8:52 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                actually tumi hoito amar bepare sob jano na
+                <span class="time">8:52 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                bepar nah dhire dhire sob jene jaba
+                <span class="time">8:52 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                but to be honest amar kache tomake dewar moto er theke beshi kichui nei
+                <span class="time">8:53 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                but i made this from my heart🙂
+                <span class="time">8:53 am</span>
+            </div>
+    
+            <div class="message message-received">
+                
+            <div class="reply-block">
+                <div class="reply-name">Swadhin Devnath</div>
+                but to be honest amar kache tomake dewar moto er theke beshi kichui nei
+            </div>
+            Aithai onek kecu amr keca
+            
+                <span class="time">8:53 am</span>
+            </div>
+    
+            <div class="message message-received">
+                
+            <div class="reply-block">
+                <div class="reply-name">Swadhin Devnath</div>
+                but i made this from my heart
+            </div>
+            Apni ja kosto kora baneacan,,,,,thanks ❤️
+            
+                <span class="time">8:54 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                ami tomake best perfect life promise korte parbo na but i can promise you that i wont leave you at your lowest
+                <span class="time">8:54 am</span>
+            </div>
+    
+            <div class="message message-received">
+                
+            <div class="reply-block">
+                <div class="reply-name">Swadhin Devnath</div>
+                ete koster kichu nei ami vebe chilam kal ratei dekhabo but dekhlam tumi klanto chile ar ghumiye giyecho tai ar dekhate parini
+            </div>
+            Arha ar bolen na
+            
+                <span class="time">8:56 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                bepar na
+                <span class="time">8:57 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                hoy emon majhe majhe
+                <span class="time">8:57 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                but seriously jodi eitar jonne tumi ektu khanio haso ami tatei khushi
+                <span class="time">8:58 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                amar ei kotha gulo tomake sorasori jiges korar sahos hoye otheni kokhono tai vablam jodi onno kono vabe jiges kora jai 🙂
+                <span class="time">8:58 am</span>
+            </div>
+    
+            <div class="message message-received">
+                
+            <div class="reply-block">
+                <div class="reply-name">Swadhin Devnath</div>
+                amar ei kotha gulo tomake sorasori jiges korar sahos hoye otheni kokhono tai vablam jodi onno kono vabe jiges kora jai
+            </div>
+            exceptional always best
+            
+                <span class="time">8:59 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                ami amar best tai try korechi 🙃 and i knew you would love this
+                <span class="time">9:00 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                ekta question kori madam?
+                <span class="time">9:00 am</span>
+            </div>
+    
+            <div class="message message-received">
+                Aber sottie apneka Nobel dawea uchit🙃
+                <span class="time">9:01 am</span>
+            </div>
+    
+            <div class="message message-received">
+                
+            <div class="reply-block">
+                <div class="reply-name">Swadhin Devnath</div>
+                ekta question kori madam?
+            </div>
+            Haaa
+            
+                <span class="time">9:01 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                
+            <div class="reply-block">
+                <div class="reply-name">লক্ষী🤍</div>
+                Aber sottie apneka Nobel dawea uchit
+            </div>
+            dio aschi to
+            
+                <span class="time">9:01 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                
+            <div class="reply-block">
+                <div class="reply-name">লক্ষী🤍</div>
+                Haaa
+            </div>
+            no te click korecho koibar?
+            
+                <span class="time">9:01 am</span>
+            </div>
+    
+            <div class="message message-received">
+                
+            <div class="reply-block">
+                <div class="reply-name">Swadhin Devnath</div>
+                no te click korecho koibar?
+            </div>
+            Ackbar o na
+            
+                <span class="time">9:02 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                try koro
+                <span class="time">9:02 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                click kore
+                <span class="time">9:02 am</span>
+            </div>
+    
+            <div class="message message-received">
+                Keno
+                <span class="time">9:02 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                moja paba
+                <span class="time">9:02 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                dekho click kore
+                <span class="time">9:02 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                <a href="https://for-my-lokkhiii.netlify.app/" target="_blank">https://for-my-lokkhiii.netlify.app/</a>
+                <span class="time">9:02 am</span>
+            </div>
+    
+            <div class="message message-received">
+                
+            <div class="reply-block">
+                <div class="reply-name">Swadhin Devnath</div>
+                moja paba
+            </div>
+            Ami tho korboi na,,,,,korla yes ai click korbo🙃
+            
+                <span class="time">9:03 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                areh nah
+                <span class="time">9:03 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                dekho to voi peyo na
+                <span class="time">9:03 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                ami bolchi na
+                <span class="time">9:03 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                vorosha rakho eto sundor kore banailam tomar jonne
+                <span class="time">9:03 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                ekbar try to koro
+                <span class="time">9:03 am</span>
+            </div>
+    
+            <div class="message message-received">
+                by the way Apni amr satha kono rokom pranck korcan na tho 🙂<br>😑
+                <span class="time">9:03 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                ehhh
+                <span class="time">9:04 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                ami emon?
+                <span class="time">9:04 am</span>
+            </div>
+    
+            <div class="message message-received">
+                
+            <div class="reply-block">
+                <div class="reply-name">Swadhin Devnath</div>
+                vorosha rakho eto sundor kore banailam tomar jonne
+            </div>
+            Accha vorosha rakhlam tha hola
+            
+                <span class="time">9:04 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                hae click kore dekho kichu hoi kina
+                <span class="time">9:05 am</span>
+            </div>
+    
+            <div class="message message-received">
+                
+            <div class="reply-block">
+                <div class="reply-name">Swadhin Devnath</div>
+                hae click kore dekho kichu hoi kina
+            </div>
+            Accha
+            
+                <span class="time">9:05 am</span>
+            </div>
+    
+            <div class="message message-received">
+                Apnie tho seriously intelligent
+                <span class="time">9:06 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                noble ta ki ajkei diba?<br>🙂
+                <span class="time">9:07 am</span>
+            </div>
+    
+            <div class="message message-received">
+                
+            <div class="reply-block">
+                <div class="reply-name">Swadhin Devnath</div>
+                <a href="https://for-my-lokkhiii.netlify.app/" target="_blank">https://for-my-lokkhiii.netlify.app/</a>
+            </div>
+            Ackta kotha apni ki aitha just moja kora baneaca na ki seriously
+            
+                <span class="time">9:08 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                i am damn over serious
+                <span class="time">9:08 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                and
+                <span class="time">9:09 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                I have fallen in love with my "Lokkhi🤍"
+                <span class="time">9:09 am</span>
+            </div>
+    
+            <div class="message message-received">
+                Accha tha hola ki ami seriously ans detha pari
+                <span class="time">9:10 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                sure
+                <span class="time">9:10 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                there is no force
+                <span class="time">9:10 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                tomar mon theke jeta bolte iccha kore you can
+                <span class="time">9:11 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                say
+                <span class="time">9:11 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                without any kind of hesitation
+                <span class="time">9:11 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                to be honest ami shudhu shanti chai and someone calm like you🤍
+                <span class="time">9:12 am</span>
+            </div>
+    
+            <div class="message message-received">
+                Thanks a lot
+                <span class="time">9:17 am</span>
+            </div>
+    
+            <div class="message message-received">
+                
+            <div class="reply-block">
+                <div class="reply-name">Swadhin Devnath</div>
+                <a href="https://for-my-lokkhiii.netlify.app/" target="_blank">https://for-my-lokkhiii.netlify.app/</a>
+            </div>
+            আমি জানি না আপনার জন্য এত সুন্দর কিছু কখনো বানাতে পারবো বা দিতে পারবো কি না কখনো জানি না
+            
+                <span class="time">9:18 am</span>
+            </div>
+    
+            <div class="message message-received">
+                একটুই বলার,,,,হারাতে চায় না কখনো
+                <span class="time">9:19 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                ami chai na eto kichu
+                <span class="time">9:19 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                আমি শুধু চাই শেষ পর্যন্ত থেকে যেতে
+                <span class="time">9:20 am</span>
+            </div>
+    
+            <div class="message message-received">
+                আশা করি আর কিছু বলা লাগবে না
+                <span class="time">9:20 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                আমার আর কিছু লাগবে না
+                <span class="time">9:20 am</span>
+            </div>
+    
+            <div class="message message-received">
+                
+            <div class="reply-block">
+                <div class="reply-name">Swadhin Devnath</div>
+                <a href="https://for-my-lokkhiii.netlify.app/" target="_blank">https://for-my-lokkhiii.netlify.app/</a>
+            </div>
+            আমার লাইফের বেস্ট কিছু
+            
+                <span class="time">9:20 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                আমি তোমার জন্য এটা বানাতে পেরে নিজে দেখেই বার বার খুশী তে নেচে নেচে উঠছি
+                <span class="time">9:21 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                কাল থেকে আমার অপেক্ষার প্রহর যেন কাটছিলই না
+                <span class="time">9:21 am</span>
+            </div>
+    
+            <div class="message message-received">
+                
+            <div class="reply-block">
+                <div class="reply-name">Swadhin Devnath</div>
+                আমি তোমার জন্য এটা বানাতে পেরে নিজে দেখেই বার বার খুশী তে নেচে নেচে উঠছি
+            </div>
+            এত সুন্দর কি বলবো
+            
+                <span class="time">9:21 am</span>
+            </div>
+    
+            <div class="message message-received">
+                আমার তো খুশিতে কান্না পাচ্ছে
+                <span class="time">9:22 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                তবে ভগবান হয়তো চায়নি কাল রাতে দিই এটা তোমাকে
+                <span class="time">9:22 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                ব্যাপার না
+                <span class="time">9:22 am</span>
+            </div>
+    
+            <div class="message message-sent">
+                
+            <div class="reply-block">
+                <div class="reply-name">লক্ষী🤍</div>
+                আমার তো খুশিতে কান্না পাচ্ছে
+            </div>
+            আরেহ নাহ নাহ কেদো না আমাকে নোবেল দিও একটা এতেই হবে<br>🙃
+            
+                <span class="time">9:22 am</span>
+            </div>
+    
+            <div class="message message-received">
+                
+            <div class="reply-block">
+                <div class="reply-name">Swadhin Devnath</div>
+                আরেহ নাহ নাহ কেদো সমাধে আমাকে নোবেল দিও একটা এতেই হবে
+            </div>
+            হুম
+            
+                <span class="time">9:22 am</span>
+            </div>
+    
+        </div>
+    </div>
+</body>
+</html>
